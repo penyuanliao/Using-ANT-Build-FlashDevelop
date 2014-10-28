@@ -1,5 +1,5 @@
-#ANT Build FlashDevelop
------
+ANT Build FlashDevelop
+========================
 ###設定
 #### Java
 1.	需要安裝JRE( Java Runtime Environment) 。
