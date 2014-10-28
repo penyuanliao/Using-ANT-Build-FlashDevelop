@@ -61,9 +61,9 @@ ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_
 ```
 #### Subversion, TortoiseSVN
 ```xml
-	<target name="svn-update-Shared_FilesVer2">
+	<target name="svn-update-Subversion">
 		<exec dir="${tortoiseSVN.path}" executable="TortoiseProc.exe" failonerror="true">
-			<arg line=" /command:update /path:'${Shared_FilesVer2.dir}' /notempfile /closeonend:2" />
+			<arg line=" /command:update /path:'${dir}' /notempfile /closeonend:2" />
 		</exec>
 	</target>
 ```
