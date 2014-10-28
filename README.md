@@ -85,7 +85,7 @@ private function setupUnitTest():void
 	</target>
 ```
 #### Subversion, TortoiseSVN
-Automating TortoiseSVN(http://tortoisesvn.net/docs/release/TortoiseSVN_en/tsvn-automation.html)
+[Automating TortoiseSVN](http://tortoisesvn.net/docs/release/TortoiseSVN_en/tsvn-automation.html)
 ```xml
 	<target name="svn-update-Subversion">
 		<exec dir="${tortoiseSVN.path}" executable="TortoiseProc.exe" failonerror="true">
