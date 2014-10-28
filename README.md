@@ -46,4 +46,13 @@ ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_
     </target>
 </project>
 ```
-
+```
+	<!-- 打開Player進行調試 -->
+	<target name="RunSwf">
+		<!-- 不能直接調用fdb，因為這樣不會打開新的命令行窗口，必須使用/K或者/C參數，加上start來啟動fdb -->
+		<echo>${basedir}\bin\output.swf</echo>
+		<exec executable="cmd" spawn="true" osfamily="windows">
+			<arg line="/K start ${basedir}\bin\output.swf" />
+		</exec>
+	</target>
+```
