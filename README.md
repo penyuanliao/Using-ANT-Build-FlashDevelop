@@ -13,27 +13,7 @@ ANT Build FlashDevelop
 ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_HOME %\bin`。
 3.	檢查是否可以command line輸入ant可以執行表示設定成功。
 
-#### ActionScript
-```actionscript
-import org.flexunit.internals.TraceListener;
-import org.flexunit.listeners.CIListener;
-import org.flexunit.runner.FlexUnitCore;
-import org.flexunit.runner.notification.async.XMLListener;
-/**
-* 單元測試
-**/
-private function setupUnitTest():void
-{
-    // Unit Test
-    var core:FlexUnitCore = new FlexUnitCore();
-    core.addListener(new TraceListener());
-    core.addListener(new CIListener(1025, "127.0.0.1")); 
-    core.addListener(new XMLListener("FlexUnit4Test"));
-    core.run(SoundUnitSuite);
-}
-```
-
-
+#### build.xml 編譯SWF物件
 ```xml
 <?xml version="1.0"?>
 <!- default_預設開始編譯 basedir_檔案位置路徑-->
@@ -74,6 +54,7 @@ private function setupUnitTest():void
     </target>
 </project>
 ```
+#### Target執行SWF
 ```xml
 	<!-- 打開Player進行調試 -->
 	<target name="RunSwf">
@@ -84,7 +65,90 @@ private function setupUnitTest():void
 		</exec>
 	</target>
 ```
-#### Subversion, TortoiseSVN
+#### Target執行flexUnit
+
+##### ActionScript
+```actionscript
+import org.flexunit.internals.TraceListener;
+import org.flexunit.listeners.CIListener;
+import org.flexunit.runner.FlexUnitCore;
+import org.flexunit.runner.notification.async.XMLListener;
+/**
+* 單元測試
+**/
+private function setupUnitTest():void
+{
+    // Unit Test
+    var core:FlexUnitCore = new FlexUnitCore();
+    core.addListener(new TraceListener());
+    core.addListener(new CIListener(1025, "127.0.0.1")); 
+    core.addListener(new XMLListener("FlexUnit4Test"));
+    core.run(SoundUnitSuite);
+}
+```
+##### Build.xml
+```xml
+<?xml version="1.0"?>
+<!- default_預設開始編譯 basedir_檔案位置路徑-->
+<project name="ANT編譯名稱" default="main" basedir=".">
+<!-- 設定變數 -->
+<property name=" FLEX_HOME " value="你的Flex SDK 路徑"/>
+<!-- 重要flash編譯需要的jar -->
+<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant"/>
+<!-- Flash Develop swf檔案位置 -->
+<property name="DEPLOY.dir" value="${basedir}/bin"/>
+	<!-- 主要編譯事件depends:執行順序 -->
+	<target name="main" depends="clean, UnitTest"/>
+	<target name="UnitTest">
+        <mxmlc
+            file="${basedir}/src/Unit/FlexUnitApplication.as"
+            output="${DEPLOY_DIR}/output.swf" 
+            static-link-runtime-shared-libraries="true" 
+			show-actionscript-warnings="true" 
+            failonerror="true" 
+			debug="true" 
+            maxmemory="1024m">
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+			<load-config append="true" filename="${basedir}\obj\soundConfig.xml"/>
+            <source-path path-element="${basedir}/src"/>
+            <source-path path-element="${FLEX_HOME}/frameworks"/>
+			<source-path path-element="${Shared_FilesVer2.dir}"/>
+			<source-path path-element="${core3.dir}"/>
+        </mxmlc>
+	<mkdir dir="${DEPLOY_DIR}"/>
+	<!--
+	timeout:連線逾時timeout
+	port:連線port對應CIListener port
+	toDir:swf資料夾
+	player:編譯是屬於flash,air
+	command:需要是debug flashPlayer
+	-->
+	<flexunit 
+		timeout="5000"
+		port="1025"
+		swf="${DEPLOY_DIR}/output.swf" 
+		toDir="${DEPLOY_DIR}" 
+		workingDir="${DEPLOY_DIR}"
+		player="flash"
+		haltonfailure="true" 
+		failureproperty="flexunit.failure"
+		verbose="true" 
+		localTrusted="true" 
+		command="D:/flashplayer_15_sa.exe" />
+	<!-- xml report資料夾 -->
+	<junitreport todir="${DEPLOY_DIR}">
+	<!-- xml report資料夾 -->
+	<fileset dir="${DEPLOY_DIR}">
+        	<include name="TEST-*.xml"/>
+	 </fileset>
+	 <!-- html report資料夾資料夾 -->
+    	<report format="frames" todir="${DEPLOY_DIR}/html"/>
+        </junitreport>
+	</target>
+</project>
+
+```
+#### Target執行Subversion, TortoiseSVN 更新
 [Automating TortoiseSVN](http://tortoisesvn.net/docs/release/TortoiseSVN_en/tsvn-automation.html)
 ```xml
 	<target name="svn-update-Subversion">
