@@ -1,10 +1,8 @@
 ANT Build FlashDevelop<BR>
 <a>設定</a>
 #### Java
------
 
 #### ANT
------
 ```xml
 <?xml version="1.0"?>
 <!- default_預設開始編譯 basedir_檔案位置路徑-->
