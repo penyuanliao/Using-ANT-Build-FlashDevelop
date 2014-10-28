@@ -9,6 +9,23 @@ ANT Build FlashDevelop<BR>
 ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_HOME %\bin`。
 3.	檢查是否可以command line輸入ant可以執行表示設定成功。
 
+### ActionScript
+```code
+/**
+* 單元測試
+**/
+private function setupUnitTest():void
+{
+    // Unit Test
+    var core:FlexUnitCore = new FlexUnitCore();
+    core.addListener(new TraceListener());
+    core.addListener(new CIListener(1025, "127.0.0.1")); 
+    core.addListener(new XMLListener("FlexUnit4Test"));
+    core.run(SoundUnitSuite);
+}
+```
+
+
 ```xml
 <?xml version="1.0"?>
 <!- default_預設開始編譯 basedir_檔案位置路徑-->
