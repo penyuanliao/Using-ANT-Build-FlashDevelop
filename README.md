@@ -29,8 +29,8 @@ ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_
 <!-- 編譯SWF物件 -->
     <target name="compile">
         <mxmlc
-        file="${basedir}/src/SedieHDMain.as"
-        output="${DEPLOY_DIR}/output.swf"  
+        file="${basedir}/src/Main.as"
+        output="${DEPLOY_DIR}/Main.swf"  
         show-actionscript-warnings="true" 
         failonerror="true" 
         debug="false" 
