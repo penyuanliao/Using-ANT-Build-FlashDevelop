@@ -1,6 +1,9 @@
 ANT Build FlashDevelop<BR>
-<a>設定</a>
+###設定
 #### Java
+1.	需要安裝JRE( Java Runtime Environment) 。
+2.	並在環境變數的系統變數上增加JAVA_HOME值輸入<你的Java路徑>並設置環境變數Path加上『;%JAVA_HOME%\bin』。
+3.	檢查是否可以在command line 輸入Java可以執行表示設定成功。
 
 #### ANT
 1.	下載ANT http://ant.apache.org/bindownload.cgi
