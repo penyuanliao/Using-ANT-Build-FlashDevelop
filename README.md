@@ -37,8 +37,11 @@ ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_
         maxmemory="1024m">
             <!-- Embed links -->
             <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
+            <!-- 載入預設flex config檔案 -->
             <load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+            <!-- 載入FlashDevelop設定檔案, 必須要增加append參數true不然不會加入此設定檔案 -->
             <load-config append="true" filename="${basedir}\obj\soundConfig.xml"/>
+            <!-- 載入 References -->
             <source-path path-element="${basedir}/src"/>
             <!-- classpath檔案 -->
             <source-path path-element="${FLEX_HOME}/frameworks"/>
@@ -53,6 +56,14 @@ ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_
 		<echo>${basedir}\bin\output.swf</echo>
 		<exec executable="cmd" spawn="true" osfamily="windows">
 			<arg line="/K start ${basedir}\bin\output.swf" />
+		</exec>
+	</target>
+```
+#### Subversion, TortoiseSVN
+```xml
+	<target name="svn-update-Shared_FilesVer2">
+		<exec dir="${tortoiseSVN.path}" executable="TortoiseProc.exe" failonerror="true">
+			<arg line=" /command:update /path:'${Shared_FilesVer2.dir}' /notempfile /closeonend:2" />
 		</exec>
 	</target>
 ```
