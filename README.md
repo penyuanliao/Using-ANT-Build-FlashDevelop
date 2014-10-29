@@ -13,7 +13,7 @@ ANT Build FlashDevelop
 ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_HOME %\bin`。
 3.	檢查是否可以command line輸入ant可以執行表示設定成功。
 
-#### build.xml 編譯SWF物件
+#### build.xml compile SWF 
 ```xml
 <?xml version="1.0"?>
 <!- default_預設開始編譯 basedir_檔案位置路徑-->
@@ -80,9 +80,12 @@ private function setupUnitTest():void
 {
     // Unit Test
     var core:FlexUnitCore = new FlexUnitCore();
+    // flash output
     core.addListener(new TraceListener());
+    // Ant output
     core.addListener(new CIListener(1025, "127.0.0.1")); 
     core.addListener(new XMLListener("FlexUnit4Test"));
+    // set as default unit test
     core.run(SoundUnitSuite);
 }
 ```
@@ -100,6 +103,11 @@ private function setupUnitTest():void
 	<!-- 主要編譯事件depends:執行順序 -->
 	<target name="main" depends="clean, UnitTest"/>
 	<target name="UnitTest">
+	<!--
+	file:set as default application
+	output:swf output file
+	static-link-runtime-shared-libraries:shared embed
+	-->
         <mxmlc
             file="${basedir}/src/Unit/FlexUnitApplication.as"
             output="${DEPLOY_DIR}/output.swf" 
