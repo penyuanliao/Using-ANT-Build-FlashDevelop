@@ -72,9 +72,11 @@ ANT_HOME 值輸入`<你的Ant路徑>`，並設置環境變數PATH 增加`;% ANT_
 //libs\FlexUnit4\flexunit-4.1.0-8-as3_4.1.0.16076.swc
 import org.flexunit.internals.TraceListener; 
 //libs\FlexUnit4\flexunit-cilistener-4.2.0-20140410-4.12.0.swc
-import org.flexunit.listeners.CIListener; 
-import org.flexunit.runner.FlexUnitCore; //libs\FlexUnit4\flexunit-4.1.0-8-as3_4.1.0.16076.swc
-import org.flexunit.runner.notification.async.XMLListener; //libs\FlexUnit4\flexunit-4.1.0-8-as3_4.1.0.16076.swc
+import org.flexunit.listeners.CIListener;
+//libs\FlexUnit4\flexunit-4.1.0-8-as3_4.1.0.16076.swc
+import org.flexunit.runner.FlexUnitCore; 
+//libs\FlexUnit4\flexunit-4.1.0-8-as3_4.1.0.16076.swc
+import org.flexunit.runner.notification.async.XMLListener; 
 /**
 * 單元測試
 **/
