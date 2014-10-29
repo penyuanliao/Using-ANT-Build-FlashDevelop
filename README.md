@@ -98,6 +98,14 @@ private function setupUnitTest():void
 <property name=" FLEX_HOME " value="你的Flex SDK 路徑"/>
 <!-- 重要flash編譯需要的jar -->
 <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant"/>
+<!-- 確定flexUnitTasks.jar的位置 -->
+<taskdef resource="flexUnitTasks.tasks">
+    <classpath>
+        <fileset dir="D:\libs\FlexUnit4\">
+             <include name="flexUnitTasks-4.2.0-20140410.jar"/>
+        </fileset>
+    </classpath>
+</taskdef>
 <!-- Flash Develop swf檔案位置 -->
 <property name="DEPLOY.dir" value="${basedir}/bin"/>
 	<!-- 主要編譯事件depends:執行順序 -->
