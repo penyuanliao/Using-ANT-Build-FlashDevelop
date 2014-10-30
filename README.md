@@ -221,7 +221,7 @@ package Version
       public static const Major:int = 1;
       public static const Minor:int = 0;
       public static const Build:int = 11;
-      <!--其中的$WCREV$就是在執行-->
+      <!--其中的$WCREV$就是在執行寫入的SVN版本號碼-->
       public static const Revision:int = $WCREV$;
       public static const Timestamp:String = "2014/10/30 下午 06:09:04";
       public static const Author:String = "Benson";
