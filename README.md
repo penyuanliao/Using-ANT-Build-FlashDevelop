@@ -172,11 +172,16 @@ private function setupUnitTest():void
 [Automating TortoiseSVN](http://tortoisesvn.net/docs/release/TortoiseSVN_en/tsvn-automation.html)
 #####同步SVN檔案
 更新同步SVN檔案到用戶電腦上須要輸入位置`update.directory`
-相關參數
-/closeonend:0 不自動關閉對話框
+
+closeonend相關參數:
+
+/closeonend:0 不自動關閉對話框 
+
 /closeonend:1 如果沒發生錯誤則自動關閉對話框
-/closeonend:2 如果沒發生錯誤和衝突則自動關閉對話框
-/closeonend:3如果沒有錯誤、衝突和合併，會自動關閉
+
+/closeonend:2 如`果沒發生錯誤和衝突則自動關閉對話框
+
+/closeonend:3 如果沒有錯誤、衝突和合併，會自動關閉
 
 ```xml
 	<target name="SVN-Update">
