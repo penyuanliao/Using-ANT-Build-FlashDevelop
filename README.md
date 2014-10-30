@@ -170,10 +170,29 @@ private function setupUnitTest():void
 ```
 #### Target執行Subversion, TortoiseSVN 更新
 [Automating TortoiseSVN](http://tortoisesvn.net/docs/release/TortoiseSVN_en/tsvn-automation.html)
+#####同步SVN檔案
+更新同步SVN檔案到用戶電腦上須要輸入位置`update.directory`
+相關參數
+/closeonend:0 不自動關閉對話框
+/closeonend:1 如果沒發生錯誤則自動關閉對話框
+/closeonend:2 如果沒發生錯誤和衝突則自動關閉對話框
+/closeonend:3如果沒有錯誤、衝突和合併，會自動關閉
+
 ```xml
-	<target name="svn-update-Subversion">
+	<target name="SVN-Update">
+		<!-- 執行系統 command line -->
 		<exec dir="${tortoiseSVN.path}" executable="TortoiseProc.exe" failonerror="true">
-			<arg line=" /command:update /path:'${dir}' /notempfile /closeonend:2" />
+			<arg line=" /command:update /path:'${update.directory}' /notempfile /closeonend:2" />
+		</exec>
+	</target>
+```
+
+#####建立SVN連動
+建立SVN同步到用戶電腦上須要輸入位置`checkout.directory`與輸入SVN來源`url.of.repository`
+```xml
+	<target name="SVN-Checkout">
+		<exec dir="." executable="TortoiseProc.exe" failonerror="true">
+			<arg line=" /command:checkout /path:'${checkout.directory}' /url:'${url.of.repository}'" />
 		</exec>
 	</target>
 ```
