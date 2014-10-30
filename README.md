@@ -128,12 +128,12 @@ private function setupUnitTest():void
             failonerror="true" 
 			debug="true" 
             maxmemory="1024m">
-			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
-			<load-config append="true" filename="${basedir}\obj\soundConfig.xml"/>
-            <source-path path-element="${basedir}/src"/>
-            <source-path path-element="${FLEX_HOME}/frameworks"/>
-			<source-path path-element="${Shared_FilesVer2.dir}"/>
-			<source-path path-element="${core3.dir}"/>
+		<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+		<load-config append="true" filename="${basedir}\obj\soundConfig.xml"/>
+                <source-path path-element="${basedir}/src"/>
+                <source-path path-element="${FLEX_HOME}/frameworks"/>
+		<source-path path-element="${Shared_FilesVer2.dir}"/>
+		<source-path path-element="${core3.dir}"/>
         </mxmlc>
 	<mkdir dir="${DEPLOY_DIR}"/>
 	<!--
@@ -157,13 +157,19 @@ private function setupUnitTest():void
 		command="D:/flashplayer_15_sa.exe" />
 	<!-- xml report資料夾 -->
 	<junitreport todir="${DEPLOY_DIR}">
-	<!-- xml report資料夾 -->
-	<fileset dir="${DEPLOY_DIR}">
+	    <!-- xml report資料夾 -->
+	    <fileset dir="${DEPLOY_DIR}">
         	<include name="TEST-*.xml"/>
-	 </fileset>
-	 <!-- html report資料夾資料夾 -->
-    	<report format="frames" todir="${DEPLOY_DIR}/html"/>
+	    </fileset>
+	    <!-- html report資料夾資料夾 -->
+    	    <report format="frames" todir="${DEPLOY_DIR}/html"/>
         </junitreport>
+	</target>
+	<!-- 刪除SWF檔案 -->
+	<target name="Clean">
+		<echo>cleaning of temporary files.</echo>
+		<delete file="${DEPLOY_DIR}/output.swf"/>
+		<echo>clean complement.</echo>
 	</target>
 </project>
 
