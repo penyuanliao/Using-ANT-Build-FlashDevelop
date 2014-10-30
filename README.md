@@ -209,3 +209,31 @@ closeonend相關參數:
 		</exec>
 	</target>
 ```
+#####抓取SVN Reversion
+TortoiseSVN 底下有個版本控管資訊 SubWCRev.exe 主要控制參數 SubWCRev `你的專案路徑` `輸出檔案範例位置` `輸出檔案位置`
+[Keyword Substitution]http://tortoisesvn.net/docs/nightly/TortoiseSVN_en/tsvn-subwcrev-keywords.html
+
+```ActionScript
+package Version
+{
+  public final class Version
+  {
+      public static const Major:int = 1;
+      public static const Minor:int = 0;
+      public static const Build:int = 11;
+      <!--其中的$WCREV$就是在執行-->
+      public static const Revision:int = $WCREV$;
+      public static const Timestamp:String = "2014/10/30 下午 06:09:04";
+      public static const Author:String = "Benson";
+  }
+}
+```
+
+```xml
+	<target name="svnversion">
+		<exec dir="${tortoiseSVN.path}" executable="SubWCRev.exe" failonerror="true">
+			<arg line=" ${project.directory} .\src\Version\_Version.as .\src\Version\Version.as" />
+		</exec>
+		<echo>$WCREV$</echo>
+	</target>
+```
