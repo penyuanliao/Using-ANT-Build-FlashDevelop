@@ -1,4 +1,4 @@
-package Version
+package versions
 {
   public final class Version
   {
