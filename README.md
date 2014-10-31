@@ -249,7 +249,7 @@ package Version
 
 5.[Regular Expression Online](http://regex101.com/r/mP4rF9/1) 線上操作正規表示法
 ###### Getting it Running 
-versionBuild.xml "Main-Build version"
+`ant versionBuild.xml "Main-Build version"`
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="" default="build">
