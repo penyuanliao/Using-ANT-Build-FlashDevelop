@@ -211,7 +211,7 @@ closeonend相關參數:
 ```
 #####抓取SVN Reversion
 TortoiseSVN 底下有個版本控管資訊 SubWCRev.exe 主要控制參數 SubWCRev `你的專案路徑` `輸出檔案範例位置` `輸出檔案位置`
-[Keyword Substitution]http://tortoisesvn.net/docs/nightly/TortoiseSVN_en/tsvn-subwcrev-keywords.html
+[Keyword Substitution](http://tortoisesvn.net/docs/nightly/TortoiseSVN_en/tsvn-subwcrev-keywords.html)
 
 ```ActionScript
 package Version
@@ -240,11 +240,11 @@ package Version
 
 
 ##### ANT GET Build Number
-[XMLTask]http://www.oopsconsultancy.com/software/xmltask/#tutorials
-[XMLTask Download]https://sourceforge.net/projects/xmltask/files/xmltask/1.16/xmltask.jar/download
-[ReplaceRegExp]https://ant.apache.org/manual/Tasks/replaceregexp.html
-[Regular Expression]https://www.google.com.tw/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#q=Regular+Expression
-[Regular Expression Online]http://regex101.com/r/mP4rF9/1
+[XMLTask](http://www.oopsconsultancy.com/software/xmltask/#tutorials)
+[XMLTask Download](https://sourceforge.net/projects/xmltask/files/xmltask/1.16/xmltask.jar/download)
+[ReplaceRegExp](https://ant.apache.org/manual/Tasks/replaceregexp.html)
+[Regular Expression](https://www.google.com.tw/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#q=Regular+Expression)
+[Regular Expression Online](http://regex101.com/r/mP4rF9/1)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
