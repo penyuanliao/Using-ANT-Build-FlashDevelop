@@ -237,3 +237,114 @@ package Version
 		<echo>$WCREV$</echo>
 	</target>
 ```
+
+
+##### ANT GET Build Number
+[XMLTask]http://www.oopsconsultancy.com/software/xmltask/#tutorials
+[XMLTask Download]https://sourceforge.net/projects/xmltask/files/xmltask/1.16/xmltask.jar/download
+[ReplaceRegExp]https://ant.apache.org/manual/Tasks/replaceregexp.html
+[Regular Expression]https://www.google.com.tw/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#q=Regular+Expression
+[Regular Expression Online]http://regex101.com/r/mP4rF9/1
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="" default="build">
+	<property name="tortoiseSVN.path" value="." basedir="."/>
+	<!-- 載入配置文件 -->
+	<property name="Project_dir" value="D:\prototype2013\IPL5\SedieGame\" />
+	<property name="def_encoding" value="UTF-8"/>
+	<property name="def_version_as" value="${Project_dir}\src\Version\Version2.as"/>
+	<property name="def_version_xml" value="${basedir}\Version.xml"/>
+	
+	<!--XML Tasks-->
+	<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+	<!-- 檢查檔案build.number 是ANT記錄Build次數檔案 -->
+	<available file="build.number" property="check.build.number" />
+	<available file="${def_version_as}" property="check.version.as" />
+	
+	<target name="Main-Build version" depends="Prepare-copy-file, SVN-version"></target>
+	
+	<target name="Prepare-copy-file" unless="check.build.number">
+		<touch file="build.number"/>
+	</target>
+	<target name="SVN-version" unless="check.build.number">
+		<buildnumber file="build.number" />
+		<echo>Setting version of project Build Number:${build.number}</echo>
+		<echo>Updating Version in Version.xml...</echo>
+		<!-- dest:來源 -->
+		<xmltask encoding="UTF-8" dest="${basedir}\Version.xml">
+			<!-- set檔案位置 -->
+			<fileset file="${basedir}\Version.xml"/>
+			<!-- 需要修改文字path:xml結構,withText:寫入文字 -->
+			<replace 
+				path="version/build/text()" 
+				withText="${build.number}"/>
+			<replace 
+				path="version/revision/text()" 
+				withText="$WCREV$"/>
+			<replace 
+				path="version/timestamp/text()" 
+				withText="$WCNOW$"/>
+		</xmltask>
+		<echo>Updating Version in Version.as...</echo>
+		<!-- Get build -->
+		<replaceregexp file="${def_version_as}"
+			match="(Build[\s\:int]*=[^;]*)"
+			byline="true"
+			encoding="${def_encoding}"
+			replace="Build:int = ${build.number}" />
+		<!-- Get Revision -->
+		<replaceregexp file="${def_version_as}"
+			match="(Revision[\s\:int]*=[^;]*)"
+			byline="true"
+			encoding="${def_encoding}"
+			replace="Revision:int = $WCREV$" />
+		<!-- get Timestamp -->
+		<replaceregexp file="${def_version_as}"
+			match="(Timestamp[\s\:String]*=[^;]*)"
+			byline="true"
+			encoding="${def_encoding}"
+			replace='Timestamp:String = "$WCNOW$"' />
+		<echo>Updated SVN Revsion Number to xml.</echo>
+		<exec dir="${tortoiseSVN.path}" executable="SubWCRev.exe" failonerror="true">
+			<arg line=" ${basedir} ${def_version_xml} ${def_version_xml}" />
+		</exec>
+		<echo>Updated SVN Revsion Number to as.</echo>
+		<exec dir="${tortoiseSVN.path}" executable="SubWCRev.exe" failonerror="true">
+			<arg line=" ${basedir} ${def_version_as} ${def_version_as}" />
+		</exec>
+		
+		<echo>Updated Version in Project(s) to Build Number:${build.number}</echo>
+	</target>
+	<!-- 找不到就創建新的 -->
+	<target name="Prepare-copy-file-as" unless="check.version.as">
+		<!-- 建立資料夾 -->
+		<mkdir  dir="${Project_dir}\src\Version" />
+		<!-- 建立檔案 -->
+		<touch file="${def_version_as}"/>
+		<!-- 初始化檔案資料 -->
+		<replaceregexp file="${def_version_as}"
+			match="([\s\S]*)"
+			byline="true"
+			encoding="${def_encoding}"
+			replace='
+		package Version &#xA;
+		{&#xA;
+		  public final class Version&#xA;
+		  {&#xA;
+			  public static const Major:int = 1;&#xA;
+			  public static const Minor:int = 0;&#xA;
+			  public static const Build:int = 0;&#xA;
+			  public static const Revision:int = 0;&#xA;
+			  public static const Timestamp:String = "";&#xA;
+			  public static const Author:String = "";&#xA;
+		  }&#xA;
+		}
+		' />
+		<echo>Create New Version.as to ${def_version_as}</echo>
+		
+	</target>
+</project>
+
+
+```
