@@ -266,11 +266,11 @@ package Version
 	<available file="${def_version_as}" property="check.version.as" />
 	
 	<target name="Main-Build version" depends="Prepare-copy-file, Prepare-copy-file-as, SVN-version"></target>
-	
+	<!-- 1.檢查build.number檔案是否存在, 找不到則建立檔案 -->
 	<target name="Prepare-copy-file" unless="check.build.number">
 		<touch file="build.number"/>
 	</target>
-	<!-- 找不到就創建新的 -->
+	<!-- 2.檢查version.as檔案路徑是否存在, 找不到則創建新的 -->
 	<target name="Prepare-copy-file-as" unless="check.version.as">
 		<!-- 建立資料夾 -->
 		<mkdir  dir="${Project_dir}\src\versions" />
@@ -298,7 +298,7 @@ package Version
 		<echo>Create New Version.as to ${def_version_as}</echo>
 		
 	</target>
-	
+	<!-- 3.開始記錄執行版本編號 -->
 	<target name="SVN-version">
 		<buildnumber file="build.number" />
 		<echo>Setting version of project Build Number:${build.number}</echo>
