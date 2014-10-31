@@ -228,7 +228,7 @@ package Version
   }
 }
 ```
-
+透過SubWCRev可以取出版本編號
 ```xml
 	<target name="svnversion">
 		<exec dir="${tortoiseSVN.path}" executable="SubWCRev.exe" failonerror="true">
@@ -238,14 +238,15 @@ package Version
 	</target>
 ```
 
-
 ##### ANT GET Build Number
 1.[XMLTask](http://www.oopsconsultancy.com/software/xmltask/#tutorials) ANT可以讀取XML的jar
 
 2.[XMLTask Download](https://sourceforge.net/projects/xmltask/files/xmltask/1.16/xmltask.jar/download) xmltask下載位置
 
 3.[ReplaceRegExp](https://ant.apache.org/manual/Tasks/replaceregexp.html) 讀取文字檔
+
 4.[Regular Expression](https://www.google.com.tw/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#q=Regular+Expression) 正規表示法相關搜尋
+
 5.[Regular Expression Online](http://regex101.com/r/mP4rF9/1) 線上操作正規表示法
 
 ```xml
