@@ -256,7 +256,7 @@ package Version
 	<!-- 載入配置文件 -->
 	<property name="Project_dir" value="D:\prototype2013\IPL5\SedieGame\" />
 	<property name="def_encoding" value="UTF-8"/>
-	<property name="def_version_as" value="${Project_dir}\src\Version\Version2.as"/>
+	<property name="def_version_as" value="${Project_dir}\src\versions\Version2.as"/>
 	<property name="def_version_xml" value="${basedir}\Version.xml"/>
 	
 	<!--XML Tasks-->
@@ -273,7 +273,7 @@ package Version
 	<!-- 找不到就創建新的 -->
 	<target name="Prepare-copy-file-as" unless="check.version.as">
 		<!-- 建立資料夾 -->
-		<mkdir  dir="${Project_dir}\src\Version" />
+		<mkdir  dir="${Project_dir}\src\versions" />
 		<!-- 建立檔案 -->
 		<touch file="${def_version_as}"/>
 		<!-- 初始化檔案資料 -->
