@@ -249,7 +249,7 @@ package Version
 
 5.[Regular Expression Online](http://regex101.com/r/mP4rF9/1) 線上操作正規表示法
 ###### Getting it Running 
-`ant versionBuild.xml "Main-Build version"`
+ant -buildfile `<Build.xml>` `<target name>` (ant -buildfile Build.xml Main-Build-version)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="" default="build">
@@ -266,7 +266,7 @@ package Version
 	<available file="build.number" property="check.build.number" />
 	<available file="${def_version_as}" property="check.version.as" />
 	
-	<target name="Main-Build version" depends="Prepare-copy-file, Prepare-copy-file-as, SVN-version"></target>
+	<target name="Main-Build-version" depends="Prepare-copy-file, Prepare-copy-file-as, SVN-version"></target>
 	<!-- 1.檢查build.number檔案是否存在, 找不到則建立檔案 -->
 	<target name="Prepare-copy-file" unless="check.build.number">
 		<touch file="build.number"/>
