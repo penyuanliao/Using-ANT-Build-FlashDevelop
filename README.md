@@ -354,3 +354,11 @@ ant -buildfile `<Build.xml>` `<target name>` (ant -buildfile Build.xml Main-Buil
 
 
 ```
+#### 上傳至SFTP
+[SCP](https://ant.apache.org/manual/Tasks/scp.html)
+```
+<!-- 複製檔案到Server -->
+<scp file="<檔案路徑>" todir="<user>:<password>@<IPAddress>:<伺服器資料夾路徑>" trust="true"/>
+<!-- 下載Server檔案到本機 -->
+<scp file="<user>:<password>@<IPAddress>:<伺服器檔案路徑>" todir="<資料夾路徑>" trust="true"/>
+```
