@@ -353,10 +353,10 @@ ant -buildfile `<Build.xml>` `<target name>` (ant -buildfile Build.xml Main-Buil
 </project>
 
 
-```xml
+```
 #### 上傳至SFTP
 [SCP](https://ant.apache.org/manual/Tasks/scp.html)
-```
+```xml
 <!-- 複製檔案到Server -->
 <scp file="<檔案路徑>" todir="<user>:<password>@<IPAddress>:<伺服器資料夾路徑>" trust="true"/>
 <!-- 下載Server檔案到本機 -->
