@@ -18,7 +18,7 @@ Reference:CoreTask https://ant.apache.org/manual/tasksoverview.html
 #### build.xml compile SWF 
 ```xml
 <?xml version="1.0"?>
-<!- default_預設開始編譯 basedir_檔案位置路徑-->
+<!- default_預設開始編譯 basedir_檔案位置路徑 -->
 <project name="ANT編譯名稱" default="main" basedir=".">
 <!-- 設定變數 -->
 <property name=" FLEX_HOME " value="你的Flex SDK 路徑"/>
@@ -98,7 +98,7 @@ private function setupUnitTest():void
 ##### Build.xml
 ```xml
 <?xml version="1.0"?>
-<!- default_預設開始編譯 basedir_檔案位置路徑-->
+<!- default_預設開始編譯 basedir_檔案位置路徑 -->
 <project name="ANT編譯名稱" default="main" basedir=".">
 <!-- 設定變數 -->
 <property name=" FLEX_HOME " value="你的Flex SDK 路徑"/>
