@@ -355,7 +355,7 @@ ant -buildfile `<Build.xml>` `<target name>` (ant -buildfile Build.xml Main-Buil
 
 ```
 #### 上傳至SFTP
-[SCP](https://ant.apache.org/manual/Tasks/scp.html)
+[SCP](https://ant.apache.org/manual/Tasks/scp.html)主要是用SSH機制來複製兩個主機之間的傳輸檔案。
 ```xml
 <!-- 複製檔案到Server -->
 <scp file="<檔案路徑>" todir="<user>:<password>@<IPAddress>:<伺服器資料夾路徑>" trust="true"/>
